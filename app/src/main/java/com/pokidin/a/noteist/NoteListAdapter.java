@@ -71,7 +71,7 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    sClickListener.onItemClick(itemView, getAdapterPosition());
+                    sClickListener.onItemClick(view, getAdapterPosition());
                 }
             });
         }
