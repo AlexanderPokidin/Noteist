@@ -4,12 +4,19 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    private List<Note> allNotes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +24,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        createListNotes();
+
+        RecyclerView recyclerView = findViewById(R.id.rv_list);
+        final NoteListAdapter adapter = new NoteListAdapter(this, allNotes);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -48,5 +62,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void createListNotes() {
+        allNotes = new ArrayList<>();
+        for (int i = 0; i < 30; i++) {
+            String tpm = i + " " + getString(R.string.test_string);
+            allNotes.add(new Note(tpm, (i + 1) + ".05.2005", "15:" + i));
+
+        }
     }
 }

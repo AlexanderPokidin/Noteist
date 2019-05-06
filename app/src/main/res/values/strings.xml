@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Noteist</string>
     <string name="action_settings">Settings</string>
+
+    <string name="test_string">and a few more words, but for more than 100 letters.
+        This is an important point and it must be checked.
+        Somewhere here the words no longer fit into the list.</string>
 </resources>
