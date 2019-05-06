@@ -3,7 +3,6 @@ package com.pokidin.a.noteist;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,12 +12,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.pokidin.a.noteist.db.NoteDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private List<Note> allNotes;
+    private NoteDatabase mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +29,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        createListNotes();
+//        createListNotes();
+        mDatabase = NoteDatabase.getInstance();
+        allNotes = mDatabase.getAllNotes();
 
         RecyclerView recyclerView = findViewById(R.id.rv_list);
         final NoteListAdapter adapter = new NoteListAdapter(this, allNotes);
@@ -50,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), NoteDetailsActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
