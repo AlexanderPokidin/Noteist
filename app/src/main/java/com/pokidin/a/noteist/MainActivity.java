@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,16 @@ public class MainActivity extends AppCompatActivity {
         final NoteListAdapter adapter = new NoteListAdapter(this, allNotes);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        adapter.setOnItemClickListener(new NoteListAdapter.ClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Note note = adapter.getNoteAtPosition(position);
+                String tmp = note.getText();
+                Toast toast = Toast.makeText(getApplicationContext(), tmp, Toast.LENGTH_LONG);
+                toast.show();
+            }
+        });
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteViewHolder> {
-//    private static ClickListener sClickListener;
+    private static ClickListener sClickListener;
 
     private final LayoutInflater mInflater;
     private List<Note> mNotes;
@@ -63,19 +63,25 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
         private final TextView mDate;
         private final TextView mTime;
 
-        public NoteViewHolder(@NonNull View itemView) {
+        public NoteViewHolder(@NonNull final View itemView) {
             super(itemView);
             mText = itemView.findViewById(R.id.tv_text);
             mDate = itemView.findViewById(R.id.tv_date);
             mTime = itemView.findViewById(R.id.tv_time);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    sClickListener.onItemClick(itemView, getAdapterPosition());
+                }
+            });
         }
     }
 
-//    public void setOnItemClickListener(ClickListener clickListener) {
-//        NoteListAdapter.sClickListener = clickListener;
-//    }
-//
-//    public interface ClickListener {
-//        void onItemClick(View view, int position);
-//    }
+    public void setOnItemClickListener(ClickListener clickListener) {
+        NoteListAdapter.sClickListener = clickListener;
+    }
+
+    public interface ClickListener {
+        void onItemClick(View view, int position);
+    }
 }
