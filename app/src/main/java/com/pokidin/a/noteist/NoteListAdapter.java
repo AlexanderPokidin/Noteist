@@ -18,7 +18,7 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
     private final LayoutInflater mInflater;
     private List<Note> mNotes;
 
-    public NoteListAdapter(Context context, List<Note> notes) {
+    NoteListAdapter(Context context, List<Note> notes) {
         mInflater = LayoutInflater.from(context);
         mNotes = notes;
     }
@@ -49,19 +49,10 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
         }
     }
 
-//    void setNotes(List<Note> notes) {
-//        mNotes = notes;
-//        notifyDataSetChanged();
-//    }
-//
-//    public Note getNoteAtPosition(int position) {
-//        return mNotes.get(position);
-//    }
-
     class NoteViewHolder extends RecyclerView.ViewHolder {
         private final TextView mText;
 
-        public NoteViewHolder(@NonNull final View itemView) {
+        NoteViewHolder(@NonNull final View itemView) {
             super(itemView);
             mText = itemView.findViewById(R.id.tv_text);
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +64,7 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
         }
     }
 
-    public void setOnItemClickListener(ClickListener clickListener) {
+    void setOnItemClickListener(ClickListener clickListener) {
         NoteListAdapter.sClickListener = clickListener;
     }
 

@@ -13,12 +13,6 @@ public class NoteDatabase implements NoteDao {
 
     private NoteDatabase() {
         allNotes = new ArrayList<>();
-//        for (int i = 0; i < 5; i++) {
-//            String tpm = i + " and a few more words, but for more than 100 letters. " +
-//                    "This is an important point and it must be checked. " +
-//                    "Somewhere here the words no longer fit into the list.";
-//            allNotes.add(new Note(tpm));
-//        }
     }
 
     public static NoteDatabase getInstance() {

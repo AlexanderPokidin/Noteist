@@ -8,8 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.pokidin.a.noteist.db.NoteDatabase;
 import com.pokidin.a.noteist.entity.Note;
@@ -40,11 +38,6 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new NoteListAdapter.ClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-//                Note note = adapter.getNoteAtPosition(position);
-//                String tmp = note.getText();
-//                Toast toast = Toast.makeText(getApplicationContext(), "" + position, Toast.LENGTH_SHORT);
-//                toast.show();
-
                 // Pass "position" as an Extra argument to open a new Activity with text.
                 startSecondActivity(position);
             }
@@ -65,27 +58,5 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(POSITION, position);
         startActivity(intent);
         finish();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }
