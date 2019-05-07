@@ -5,5 +5,7 @@
     <string name="test_string">and a few more words, but for more than 100 letters.
         This is an important point and it must be checked.
         Somewhere here the words no longer fit into the list.</string>
+    <string name="no_word">No word</string>
     <string name="write_your_note">Let`s write down your note here</string>
+    <string name="done">DONE</string>
 </resources>

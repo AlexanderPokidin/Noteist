@@ -1,6 +1,6 @@
 package com.pokidin.a.noteist.db;
 
-import com.pokidin.a.noteist.Note;
+import com.pokidin.a.noteist.entity.Note;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ public class NoteDatabase {
             String tpm = i + " and a few more words, but for more than 100 letters. " +
                     "This is an important point and it must be checked. " +
                     "Somewhere here the words no longer fit into the list.";
-            allNotes.add(new Note(tpm, (i + 1) + ".05.2005", "15:" + i));
+            allNotes.add(new Note(tpm));
         }
     }
 
@@ -41,7 +41,7 @@ public class NoteDatabase {
         return allNotes.get(position);
     }
 
-    public void removeNoteAtPosition(int position){
+    public void removeNoteAtPosition(int position) {
         allNotes.remove(position);
     }
 }

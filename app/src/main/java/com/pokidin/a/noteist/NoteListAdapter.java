@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.pokidin.a.noteist.entity.Note;
+
 import java.util.List;
 
 public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteViewHolder> {
@@ -33,8 +35,6 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
         if (mNotes != null) {
             Note current = mNotes.get(position);
             holder.mText.setText(current.getText());
-            holder.mDate.setText(current.getDate());
-            holder.mTime.setText(current.getTime());
         } else {
             holder.mText.setText("No note");
         }
@@ -60,14 +60,10 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
 
     class NoteViewHolder extends RecyclerView.ViewHolder {
         private final TextView mText;
-        private final TextView mDate;
-        private final TextView mTime;
 
         public NoteViewHolder(@NonNull final View itemView) {
             super(itemView);
             mText = itemView.findViewById(R.id.tv_text);
-            mDate = itemView.findViewById(R.id.tv_date);
-            mTime = itemView.findViewById(R.id.tv_time);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

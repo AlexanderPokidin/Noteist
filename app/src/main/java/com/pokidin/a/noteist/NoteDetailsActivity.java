@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.pokidin.a.noteist.db.NoteDatabase;
+import com.pokidin.a.noteist.entity.Note;
 
 public class NoteDetailsActivity extends AppCompatActivity {
 
@@ -57,7 +58,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
     private void updateDatabase(){
         String userText = String.valueOf(mText.getText());
         if (userText.length() > 0){
-            mDatabase.setNewNote(new Note(userText, null, null));
+            mDatabase.setNewNote(new Note(userText));
         }
         Intent intent = new Intent(NoteDetailsActivity.this, MainActivity.class);
         startActivity(intent);

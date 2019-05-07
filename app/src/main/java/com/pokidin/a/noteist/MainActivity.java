@@ -10,11 +10,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.pokidin.a.noteist.db.NoteDatabase;
+import com.pokidin.a.noteist.entity.Note;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        createListNotes();
         mDatabase = NoteDatabase.getInstance();
         allNotes = mDatabase.getAllNotes();
 
@@ -85,14 +83,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private void createListNotes() {
-        allNotes = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            String tpm = i + " " + getString(R.string.test_string);
-            allNotes.add(new Note(tpm, (i + 1) + ".05.2005", "15:" + i));
-
-        }
     }
 }
