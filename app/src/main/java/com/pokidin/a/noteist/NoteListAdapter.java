@@ -49,14 +49,14 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
         }
     }
 
-    void setNotes(List<Note> notes) {
-        mNotes = notes;
-        notifyDataSetChanged();
-    }
-
-    public Note getNoteAtPosition(int position) {
-        return mNotes.get(position);
-    }
+//    void setNotes(List<Note> notes) {
+//        mNotes = notes;
+//        notifyDataSetChanged();
+//    }
+//
+//    public Note getNoteAtPosition(int position) {
+//        return mNotes.get(position);
+//    }
 
     class NoteViewHolder extends RecyclerView.ViewHolder {
         private final TextView mText;

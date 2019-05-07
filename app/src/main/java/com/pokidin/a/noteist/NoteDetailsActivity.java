@@ -23,7 +23,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
 
         mDatabase = NoteDatabase.getInstance();
         mText = findViewById(R.id.et_text);
-        setNoteTextToEt();
+        createNewNoteWithUserText();
 
         mButton = findViewById(R.id.btn_done);
         mButton.setOnClickListener(new View.OnClickListener() {
@@ -40,13 +40,10 @@ public class NoteDetailsActivity extends AppCompatActivity {
         updateDatabase();
     }
 
-//    private Note getUserTextFromEt() {
-//        String userText = String.valueOf(mText.getText());
-//        return new Note(userText, null, null);
-//    }
-
-    private void setNoteTextToEt() {
+    private void createNewNoteWithUserText() {
         Intent intent = getIntent();
+        // If the Extra argument is larger than 0, fill in the EditText`s field.
+        // Otherwise, leave the field blank.
         int position = intent.getIntExtra(MainActivity.POSITION, 0);
         if (position > 0) {
             String currentText = mDatabase.getNoteAtPosition(position).getText();
@@ -55,9 +52,9 @@ public class NoteDetailsActivity extends AppCompatActivity {
         }
     }
 
-    private void updateDatabase(){
+    private void updateDatabase() {
         String userText = String.valueOf(mText.getText());
-        if (userText.length() > 0){
+        if (userText.length() > 0) {
             mDatabase.setNewNote(new Note(userText));
         }
         Intent intent = new Intent(NoteDetailsActivity.this, MainActivity.class);

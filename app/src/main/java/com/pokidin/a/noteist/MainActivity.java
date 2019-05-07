@@ -45,10 +45,8 @@ public class MainActivity extends AppCompatActivity {
 //                Toast toast = Toast.makeText(getApplicationContext(), "" + position, Toast.LENGTH_SHORT);
 //                toast.show();
 
-                Intent intent = new Intent(getApplicationContext(), NoteDetailsActivity.class);
-                intent.putExtra(POSITION, position);
-                startActivity(intent);
-                finish();
+                // Pass "position" as an Extra argument to open a new Activity with text.
+                startSecondActivity(position);
             }
         });
 
@@ -56,11 +54,17 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), NoteDetailsActivity.class);
-                startActivity(intent);
-                finish();
+                // Pass 0 as an Extra argument to open a new Activity with an empty field.
+                startSecondActivity(0);
             }
         });
+    }
+
+    private void startSecondActivity(int position){
+        Intent intent = new Intent(getApplicationContext(), NoteDetailsActivity.class);
+        intent.putExtra(POSITION, position);
+        startActivity(intent);
+        finish();
     }
 
     @Override
