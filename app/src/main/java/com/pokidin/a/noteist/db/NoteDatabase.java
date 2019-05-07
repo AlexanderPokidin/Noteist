@@ -27,11 +27,21 @@ public class NoteDatabase {
         return instance;
     }
 
+    // A new note is added to the 0 position,
+    // to be displayed at the top of the list by default.
     public void setNewNote(Note note) {
-        allNotes.add(note);
+        allNotes.add(0, note);
     }
 
     public List<Note> getAllNotes() {
         return allNotes;
+    }
+
+    public Note getNoteAtPosition(int position) {
+        return allNotes.get(position);
+    }
+
+    public void removeNoteAtPosition(int position){
+        allNotes.remove(position);
     }
 }

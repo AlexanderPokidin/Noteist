@@ -19,6 +19,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String POSITION = "position";
     private List<Note> allNotes;
     private NoteDatabase mDatabase;
 
@@ -41,10 +42,15 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new NoteListAdapter.ClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Note note = adapter.getNoteAtPosition(position);
-                String tmp = note.getText();
-                Toast toast = Toast.makeText(getApplicationContext(), tmp, Toast.LENGTH_LONG);
-                toast.show();
+//                Note note = adapter.getNoteAtPosition(position);
+//                String tmp = note.getText();
+//                Toast toast = Toast.makeText(getApplicationContext(), "" + position, Toast.LENGTH_SHORT);
+//                toast.show();
+
+                Intent intent = new Intent(getApplicationContext(), NoteDetailsActivity.class);
+                intent.putExtra(POSITION, position);
+                startActivity(intent);
+                finish();
             }
         });
 

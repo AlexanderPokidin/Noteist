@@ -32,6 +32,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:maxLength="100"
+        android:maxLines="2"
         android:text="Bxjhdbrvdj jhbc bvc bhvj bxlv jhx vhxbv hkxbvhj, b hb jvhb bht b xbxh$$$$ bjhvb jhhvjhxv hxjv jhxb jhb jhbhj????? Bjhx bvhjb vjhbhb hjvb ,vbk wuiirueshxvxduhvuri vfxvhxdr e!!!!!"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -6,18 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.pokidin.a.noteist.db.NoteDatabase;
-
-import java.util.List;
 
 public class NoteDetailsActivity extends AppCompatActivity {
 
     private Button mButton;
     private EditText mText;
     private NoteDatabase mDatabase;
-    private List<Note> mNotes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +22,12 @@ public class NoteDetailsActivity extends AppCompatActivity {
 
         mDatabase = NoteDatabase.getInstance();
         mText = findViewById(R.id.et_text);
+        setNoteTextToEt();
 
         mButton = findViewById(R.id.btn_done);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String tmp = String.valueOf(mText.getText());
                 onBackPressed();
             }
         });
@@ -40,18 +36,30 @@ public class NoteDetailsActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        mDatabase.setNewNote(getUserText(mText));
+        updateDatabase();
+    }
+
+//    private Note getUserTextFromEt() {
+//        String userText = String.valueOf(mText.getText());
+//        return new Note(userText, null, null);
+//    }
+
+    private void setNoteTextToEt() {
+        Intent intent = getIntent();
+        int position = intent.getIntExtra(MainActivity.POSITION, 0);
+        if (position > 0) {
+            String currentText = mDatabase.getNoteAtPosition(position).getText();
+            mText.setText(currentText);
+            mDatabase.removeNoteAtPosition(position);
+        }
+    }
+
+    private void updateDatabase(){
+        String userText = String.valueOf(mText.getText());
+        if (userText.length() > 0){
+            mDatabase.setNewNote(new Note(userText, null, null));
+        }
         Intent intent = new Intent(NoteDetailsActivity.this, MainActivity.class);
         startActivity(intent);
-    }
-
-    private Note getUserText(EditText editText) {
-        String userText = String.valueOf(editText.getText());
-        return new Note(userText, null, null);
-    }
-
-    private void addNote(Note note) {
-        mNotes = mDatabase.getAllNotes();
-        mNotes.add(note);
     }
 }
