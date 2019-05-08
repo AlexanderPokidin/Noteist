@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Pass 0 as an Extra argument to open a new Activity with an empty field.
-                startSecondActivity(0);
+                // Pass -1 as an Extra argument to open a new Activity with an empty field.
+                startSecondActivity(-1);
             }
         });
     }
