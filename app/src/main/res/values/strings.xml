@@ -8,4 +8,6 @@
     <string name="no_word">No word</string>
     <string name="write_your_note">Let`s write down your note here</string>
     <string name="done">DONE</string>
+    <string name="delete_note">Delete the note</string>
+    <string name="share_note">Share the note</string>
 </resources>
